@@ -12,6 +12,7 @@ public:
 		cout << "나이" << age_ << endl;
 		cout << "다리갯수" << leg_num_ << endl;
 	}
+	~Animal() { cout << "Animal 소멸자" << endl; }
 	virtual void walk(void) { //걷는
 		cout << "걷다" << endl;
 	}
@@ -21,6 +22,7 @@ public:
 	virtual void eat(void) { //먹는
 		cout << "먹다" << endl;
 	}
+	
 private:
 	string name_;
 	unsigned int age_;
@@ -37,27 +39,20 @@ public:
 	{
 		cout << "충성도" << endl;
 	}
+	~Dog() { cout << "Dog 소멸자" << endl; }
 
 	//C++은 디폴트가 정적바인딩이기 때문에 가상함수로 오버라이딩 해야 한다.
-	void bark() {cout << "울프울프" << endl;}
-	void eat() {cout << "왕~왕~" << endl;}
-	void walk() {cout << "촵촵촵촵" << endl;}
+	void bark() override {cout << "울프울프" << endl;}
+	void eat()  override {cout << "왕~왕~" << endl;}
+	void walk() override {cout << "촵촵촵촵" << endl;}
 
 private:
 	int loyalty_; //충성도
 };
 
 int main(void) {
-	Animal* animal = new Animal("요아조비", 8, 2);
-	animal->bark();
-	animal->eat();
-	animal->walk();
-	delete animal;
-
-	animal = new Dog("마루", 5, 2, 100);
-	animal->bark();
-	animal->eat();
-	animal->walk();
+	Animal* animal = new Dog("마루", 5, 2, 100);
+	//정적바인딩으로 인해 Dog소멸자는 호출이 안됨
 	delete animal;
 
 }//main
