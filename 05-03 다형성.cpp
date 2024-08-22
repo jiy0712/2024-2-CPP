@@ -12,13 +12,13 @@ public:
 		cout << "³ªÀÌ" << age_ << endl;
 		cout << "´Ù¸®°¹¼ö" << leg_num_ << endl;
 	}
-	void walk(void) { //°È´Â
+	virtual void walk(void) { //°È´Â
 		cout << "°È´Ù" << endl;
 	}
-	void bark(void) { //Â¢´Â
+	virtual void bark(void) { //Â¢´Â
 		cout << "Â¢´Ù" << endl;
 	}
-	void eat(void) { //¸Ô´Â
+	virtual void eat(void) { //¸Ô´Â
 		cout << "¸Ô´Ù" << endl;
 	}
 private:
