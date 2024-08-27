@@ -6,22 +6,17 @@ using namespace std;
 class Animal {
 public:
 	Animal(string name, unsigned int age, int leg_num)
-		: name_(name), age_(age), leg_num_(leg_num)
-	{
+		: name_(name), age_(age), leg_num_(leg_num){
 		cout << "이름" << name_ << endl;
 		cout << "나이" << age_ << endl;
 		cout << "다리갯수" << leg_num_ << endl;
 	}
 	virtual ~Animal() { cout << "Animal 소멸자" << endl; }
-	virtual void walk(void) { //걷는
-		cout << "걷다" << endl;
-	}
-	virtual void bark(void) { //짖는
-		cout << "짖다" << endl;
-	}
-	virtual void eat(void) { //먹는
-		cout << "먹다" << endl;
-	}
+	
+	//순수 가상함수(추상메서드)
+	virtual void walk(void) = 0;
+	virtual void bark(void) = 0;
+	virtual void eat(void) = 0;
 	
 private:
 	string name_;
@@ -51,7 +46,9 @@ private:
 };
 
 int main(void) {
+	//추상클래스는 객체를 생성할 수 없다(new Animal() 불가))
 	Animal* animal = new Dog("마루", 5, 2, 100);
+	animal->bark();
 	delete animal;
 
 }//main
