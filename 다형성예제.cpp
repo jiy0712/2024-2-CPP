@@ -9,7 +9,8 @@ public:
 	Food(int civil, int force, string name, int territory)
 		: civil_(civil), force_(force), name_(name), territory_(territory) {}
 
-	void show() {
+	virtual void show() {
+		Food::show();
 		cout << "±¹¹Î ¼ö : " << civil_ << endl;
 		cout << "±º·Â : " << force_ << endl;
 		cout << "ÀÌ¸§ : " << name_ << endl;
@@ -29,6 +30,7 @@ public:
 		:Food(civil, force, name, territory), garlic_(garic), pepper_(pepper) {}
 
 	void show() {
+		Food::show();
 		cout << "¸¶´Ã : " << garlic_ << endl;
 		cout << "°íÃß : " << pepper_ << endl;
 	}
@@ -42,6 +44,7 @@ public:
 	Jelly(int civil, int force, string name, int territory, int gelatin, int suger)
 		:Food(civil, force, name, territory), gelatin_(gelatin), sugar_(sugar) {}
 	void show() {
+		Food::show();
 		cout << "Á©¶óÆ¾ : " << gelatin_ << endl;
 		cout << "¼³ÅÁ : " << suger_ << endl;
 	}
@@ -55,6 +58,7 @@ public:
 	Cheese(int civil, int force, string name, int territory, int milk, int rennet)
 		:Food(civil, force, name, territory), milk_(milk), rennet_(rennet) {}
 	void show() {
+		Food::show();
 		cout << "¿ìÀ¯ : " << milk_ << endl;
 		cout << "ÀÀ°íÁ¦ : " << rennet_ << endl;
 	}
