@@ -18,7 +18,14 @@ public:
 		cout << "면적 : " << territory_ << endl;
 	}
 
-private:
+//	void attack(Food* target) {
+//		target->force_ -= force_;
+//		if (target->force_ <= 0)
+//			delete target;
+//	}
+
+	virtual void attack(Food* target) = 0;
+
 	int civil_; //국민수
 	int force_; //군력
 	string name_; //이름
@@ -35,7 +42,11 @@ public:
 		cout << "마늘 : " << garlic_ << endl;
 		cout << "고추 : " << pepper_ << endl;
 	}
-private:
+
+	void attack(Food* target) override {
+		target->forece_ -= this->force_ * 2;
+	}
+
 	int garic_;
 	int pepper_;
 };
@@ -49,7 +60,11 @@ public:
 		cout << "젤라틴 : " << gelatin_ << endl;
 		cout << "설탕 : " << suger_ << endl;
 	}
-private:
+
+	void attack(Food* target) override {
+		target->forece_ += this->force_ / 2;
+	}
+
 	int gelatin_;
 	int suger_; //설탕의 힘
 };
@@ -63,7 +78,10 @@ public:
 		cout << "우유 : " << milk_ << endl;
 		cout << "응고제 : " << rennet_ << endl;
 	}
-private:
+	void attack(Food* target) override {
+		target->forece_ -= this->force_ / 3;
+	}
+
 	int milk_;
 	int rennet_; //응고제
 
@@ -94,6 +112,7 @@ void main(void) {
 		case 1:
 			//TODO : 공격
 			cout << "공격" << endl;
+
 			break;
 		case 2:
 			//TODO : 특수1
